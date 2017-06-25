@@ -31,6 +31,17 @@ body {
 	background-color: #159dab;
 }
 
+#team1 {
+	display: inline-block;
+	float: left;
+}
+
 #videoPlayer {
-	margin: 20px;
+	margin-top: 10px;
+	display: inline-block;
+}
+
+#team2 {
+	display: inline-block;
+	float: right;
 }

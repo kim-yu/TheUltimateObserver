@@ -7,6 +7,8 @@ from bs4 import BeautifulSoup
 from tabulate import tabulate
 import re
 
+# Currently only supports college and club divisions
+
 def getTeamPage(division, gender, team, search):
   results = []
   url = urlopen('http://play.usaultimate.org/teams/events/team_rankings/?RankSet='+division+'-'+gender+'&F_'+search+'Name='+team)
