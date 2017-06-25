@@ -1,8 +1,11 @@
 import os
 import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 from urllib import urlopen
 from bs4 import BeautifulSoup
 from tabulate import tabulate
+import re
 
 def getTeamPage(division, gender, team, search):
   results = []
@@ -35,6 +38,12 @@ def getRoster(teamPage):
     roster.append((cleanedName, number))
   return roster
 
+def createRosterFile(roster, team):
+  f = open(team[0].upper()+team[1:]+'.txt', 'w+')
+  for player in roster:
+    f.write('#'+player[1]+' '+player[0]+'\n')
+  f.close()
+
 if __name__ == '__main__':
   division = sys.argv[1]
   gender = sys.argv[2]
@@ -45,5 +54,6 @@ if __name__ == '__main__':
     search = 'Team'
   
   teamPage = getTeamPage(division, gender, team, search)
-  roster = getRoster(teamPage)
+  roster = getRoster(teamPage)  
+  createRosterFile(roster, team)
   print tabulate(roster, headers=['Name', 'Number'])
