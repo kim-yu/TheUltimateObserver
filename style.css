@@ -7,7 +7,7 @@ body {
 }
 
 #videoURL {
-	height: 20px;
+	height: 30px;
 	width: 350px;
 	font-size: 14px;
 	border-radius: 4px;
@@ -16,7 +16,7 @@ body {
 }
 
 #loadVideo {
-	width: 150px;
+	width: 100px;
 	cursor: pointer;
 	margin-left: 10px;
 	border-radius: 4px;
@@ -34,6 +34,7 @@ body {
 #team1 {
 	display: inline-block;
 	float: left;
+	text-align: center;
 }
 
 #videoPlayer {
@@ -44,4 +45,36 @@ body {
 #team2 {
 	display: inline-block;
 	float: right;
+	text-align: center;
+}
+
+#division {
+	width: 100px;
+	font-size: 12px;
+	margin-right: 5px;
+}
+
+#gender {
+	width: 100px;
+	font-size: 12px;
+	margin-right: 5px;
+}
+
+#team {
+	width: 130px;
+	font-size: 12px;
+	margin-top: 5px;
+}
+
+#rosterSearch {
+	width: 60px;
+	margin-left: 5px;
+	margin-top: 5px;
+	cursor: pointer;
+	border-radius: 4px;
+	background-color: #23baca;
+	color: white;
+	border-color: #23baca;
+	font-size: 14px;
+	padding: 3px;
 }

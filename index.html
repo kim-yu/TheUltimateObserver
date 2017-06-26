@@ -3,24 +3,26 @@
 <head>
 	<title>The Ultimate Observer</title>
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.css">
 	<script src="script.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
 </head>
 <body>
 	<div id="setup">
 		<input type="url" id="videoURL" name="videoURL" placeholder="Enter the video's Youtube URL">
-		<button id="loadVideo" type="submit" name="loadVideo" onclick="return loadVideo()">Load video</button>
+		<button id="loadVideo" type="submit" name="loadVideo" class="btn" onclick="return loadVideo()">Load video</button>
 	</div>
 	<div id="videoSection">
-		<div id="team1">
+		<div id="team1" class="col-md-3">
 			<div id="team1_setup">
 			</div>
 			<div id="team1_rosterList">
 			</div>
 		</div>
+		<div id="videoPlayer" class="col-md-6">
 		</div>
-		<div id="videoPlayer">
-		</div>
-		<div id="team2">
+		<div id="team2" class="col-md-3">
 			<div id="team2_setup">
 			</div>
 			<div id="team2_rosterList">

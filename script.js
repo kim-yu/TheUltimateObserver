@@ -3,10 +3,18 @@ function getVideoSrc(url) {
 	return src+'?rel=0';
 }
 
-function getTeamRosters() {
-	var team1 = document.getElementById('team1_setup');
-	var team2 = document.getElementById('team2_setup');
+function rosterSearch(division, gender, team) {
+	var team = document.getElementById('rosterSearch').value;
+	$.ajax({
+		type: "POST",
+		url: "~/rosterParser.py",
+		data: { 'division': division, 'gender': gender, 'team': team }
+	}).done(function() {
+		console.log(data);
+	});
+}
 
+function createDivisionSelect() {
 	var division = document.createElement('select');
 	division.setAttribute('id', 'division');
 	var optionDivision = document.createElement('option');
@@ -20,8 +28,12 @@ function getTeamRosters() {
 	optionCollege.setAttribute('value', 'college');
 	optionCollege.innerHTML = 'College';
 	division.appendChild(optionCollege);
+	return division;
+}
 
+function createGenderSelect() {
 	var gender = document.createElement('select');
+	gender.setAttribute('id', 'gender');
 	var optionGender = document.createElement('option');
 	optionGender.innerHTML = '-- GENDER --';
 	gender.appendChild(optionGender);
@@ -35,22 +47,44 @@ function getTeamRosters() {
 	gender.appendChild(optionMixed);
 	var optionWomen = document.createElement('option');
 	optionWomen.setAttribute('value', 'women');
-	optionWomen.innerHtML = 'Women';
+	optionWomen.innerHTML = 'Women';
 	gender.appendChild(optionWomen);
+	return gender;
+}
 
+function createTeamSearch() {
 	var team = document.createElement('input');
 	team.setAttribute('type', 'text');
 	team.setAttribute('id', 'team');
 	team.setAttribute('name', 'team');
 	team.placeholder = "Enter team name"
+	return team;
+}
 
-	team1.appendChild(division.cloneNode());
-	team1.appendChild(gender.cloneNode());
-	team1.appendChild(team.cloneNode());
+function createRosterSearchButton() {
+	var rosterSearch = document.createElement('button');
+	rosterSearch.setAttribute('id', 'rosterSearch');
+	rosterSearch.setAttribute('type', 'submit');
+	rosterSearch.setAttribute('name', 'rosterSearch');
+	rosterSearch.className = 'btn';
+	rosterSearch.setAttribute('onclick', 'return rosterSearch()');
+	rosterSearch.innerHTML = 'Search';
+	return rosterSearch;
+}
 
-	team2.appendChild(division.cloneNode());
-	team2.appendChild(gender.cloneNode());
-	team2.appendChild(team.cloneNode());
+function getTeamRosters() {
+	var team1 = document.getElementById('team1_setup');
+	var team2 = document.getElementById('team2_setup');
+
+	team1.appendChild(createDivisionSelect());
+	team1.appendChild(createGenderSelect());
+	team1.appendChild(createTeamSearch());
+	team1.appendChild(createRosterSearchButton());
+
+	team2.appendChild(createDivisionSelect());
+	team2.appendChild(createGenderSelect());
+	team2.appendChild(createTeamSearch());
+	team2.appendChild(createRosterSearchButton());
 }
 
 function loadVideo() {
